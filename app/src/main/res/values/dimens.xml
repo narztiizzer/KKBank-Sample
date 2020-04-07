@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="app_2">2dp</dimen>
+    <dimen name="app_4">4dp</dimen>
+    <dimen name="app_8">8dp</dimen>
+    <dimen name="app_16">16dp</dimen>
+    <dimen name="app_24">24dp</dimen>
+    <dimen name="app_32">32dp</dimen>
+    <dimen name="app_48">48dp</dimen>
+    <dimen name="app_52">52dp</dimen>
+    <dimen name="app_64">64dp</dimen>
+    <dimen name="app_96">96dp</dimen>
+    <dimen name="app_128">128dp</dimen>
+    <dimen name="app_256">256dp</dimen>
+    <dimen name="pin_dot_margin">16dp</dimen>
+    <dimen name="pin_size">72dp</dimen>
+</resources>

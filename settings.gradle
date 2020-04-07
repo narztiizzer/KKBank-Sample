@@ -1,0 +1,3 @@
+rootProject.name='KKBank Sample Application'
+include ':app'
+include ':carousel'
