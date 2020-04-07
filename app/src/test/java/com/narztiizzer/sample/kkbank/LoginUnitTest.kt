@@ -4,7 +4,9 @@ import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.narztiizzer.sample.kkbank.model.User
+import com.narztiizzer.sample.kkbank.repository.ApiService
 import com.narztiizzer.sample.kkbank.repository.AppRepository
+import com.narztiizzer.sample.kkbank.repository.LocalDatabase
 import com.narztiizzer.sample.kkbank.utils.CoroutinesTestRule
 import com.narztiizzer.sample.kkbank.viewmodel.VMLogin
 import kotlinx.coroutines.CoroutineScope
@@ -17,6 +19,8 @@ import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mockito
 import org.mockito.Mockito.mock
+import retrofit2.Call
+import retrofit2.Response
 
 class LoginUnitTest {
     @Rule
@@ -27,7 +31,10 @@ class LoginUnitTest {
     @get:Rule
     var coroutinesRule = CoroutinesTestRule()
 
-    private val repository = mock(AppRepository::class.java)
+    private val context = mock(Context::class.java)
+    private val localDatabase = LocalDatabase(context)
+    private val apiService = mock(ApiService::class.java)
+    private val repository = AppRepository(localDatabase, apiService)
     private val viewModel = VMLogin(repository)
     private val observerLogin: Observer<User> = mock(Observer::class.java) as Observer<User>
 
@@ -38,7 +45,6 @@ class LoginUnitTest {
 
     @Test
     fun validateInput_Test() {
-        val context = mock(Context::class.java)
         val username = "nattapongp"
         val password = "1234"
 
@@ -49,15 +55,18 @@ class LoginUnitTest {
 
     @Test
     fun validateLoginResult_Test() {
-        Mockito.`when`(repository.requestLogin()).thenReturn(
-            User(
+        val mockResponse: Call<User> = mock(Call::class.java) as Call<User>
+        Mockito.`when`(apiService.login()).thenReturn(mockResponse)
+        Mockito.`when`(mockResponse.execute()).thenReturn(
+            Response.success(User(
                 "Nattapong",
                 "Poomtong",
                 "nattapong.poom@gmail.com",
                 "0870328735"
-            )
+            ))
         )
-        viewModel.login()
+
+        viewModel.login(Dispatchers.Unconfined)
         assertEquals("Nattapong", viewModel._loginSuccess.value?.firstName)
     }
 }

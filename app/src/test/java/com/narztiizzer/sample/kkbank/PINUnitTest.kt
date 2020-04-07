@@ -3,7 +3,6 @@ package com.narztiizzer.sample.kkbank
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.narztiizzer.sample.kkbank.repository.AppRepository
-import com.narztiizzer.sample.kkbank.repository.Repository
 import com.narztiizzer.sample.kkbank.viewmodel.VMPinCode
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue

@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.narztiizzer.sample.kkbank.R
 import com.narztiizzer.sample.kkbank.model.User
 import com.narztiizzer.sample.kkbank.repository.AppRepository
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -24,8 +25,8 @@ class VMLogin(private val repository: AppRepository): ViewModel() {
     val errorMessage: LiveData<String> = this._errorMessage
     val loadingDialog: LiveData<Boolean> = this._loadingDialog
 
-    fun login() {
-        viewModelScope.launch(Dispatchers.Default) {
+    fun login(dispatcher: CoroutineDispatcher = Dispatchers.Default) {
+        viewModelScope.launch(dispatcher) {
             _loadingDialog.postValue(true)
             try {
                 val response = this@VMLogin.repository.requestLogin()

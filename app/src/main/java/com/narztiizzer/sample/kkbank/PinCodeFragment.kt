@@ -98,12 +98,12 @@ class PinCodeFragment: Fragment(), View.OnClickListener {
 
         //Compare setup pin with confirm pin and save
         this.viewModel.setupPinCode.observe(this.viewLifecycleOwner, Observer { isSuccess ->
-            this.openHomepage()
+            if(isSuccess) this.openHomepage()
         })
 
         //Compare input pin with cache
         this.viewModel.validatePinCode.observe(this.viewLifecycleOwner, Observer { isPass ->
-            this.openHomepage()
+            if(isPass) this.openHomepage()
         })
     }
 

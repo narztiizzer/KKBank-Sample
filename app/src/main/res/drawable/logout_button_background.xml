@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    <item>-->
+<!--        <shape android:innerRadiusRatio="3"-->
+<!--            android:shape="rectangle"-->
+<!--            android:thickness="2dp"-->
+<!--            android:useLevel="false">-->
+
+<!--            <gradient-->
+<!--                android:startColor="#FFFFFF"-->
+<!--                android:centerColor="#E0E5EC"-->
+<!--                android:endColor="#66A3B1C6"-->
+<!--                android:centerX="0.1"-->
+<!--                android:centerY="0.1"-->
+<!--                android:angle="-45"/>-->
+
+<!--            <corners android:radius="@dimen/app_16" />-->
+
+<!--        </shape>-->
+<!--    </item>-->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#27FFFFFF"
+                android:endColor="#33FFFFFF"
+                android:centerX="0.1"
+                android:angle="-45"/>
+            <corners android:topLeftRadius="@dimen/app_16"
+                android:bottomRightRadius="@dimen/app_16"
+                android:topRightRadius="@dimen/app_24"
+                android:bottomLeftRadius="@dimen/app_24" />
+            <size android:width="@dimen/app_128" android:height="@dimen/app_48" />
+        </shape>
+    </item>
+
+    <item android:top="@dimen/app_4"
+        android:left="@dimen/app_4">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#0D6B6B6B"
+                android:endColor="#79A3B1C6"
+                android:angle="360"/>
+            <corners android:topLeftRadius="@dimen/app_16"
+                android:bottomRightRadius="@dimen/app_16"
+                android:topRightRadius="@dimen/app_16"
+                android:bottomLeftRadius="@dimen/app_16" />
+
+            <size android:width="@dimen/app_128" android:height="@dimen/app_48" />
+        </shape>
+    </item>
+    <item android:top="@dimen/app_2"
+        android:bottom="@dimen/app_2"
+        android:left="@dimen/app_2"
+        android:right="@dimen/app_2">
+        <shape android:shape="rectangle">
+            <solid android:color="#E0E5EC"/>
+            <corners android:radius="@dimen/app_16" />
+            <size android:width="@dimen/app_128" android:height="@dimen/app_48" />
+        </shape>
+    </item>
+</layer-list>

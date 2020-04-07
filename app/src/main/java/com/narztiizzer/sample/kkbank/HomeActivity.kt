@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.narztiizzer.carousel.CarouselItemChangeListener
 import com.narztiizzer.carousel.CarouselItemListener
+import com.narztiizzer.sample.kkbank.utils.LoadingDialogFragment
 import com.narztiizzer.sample.kkbank.viewmodel.VMHome
 import kotlinx.android.synthetic.main.home_activity.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -24,27 +25,18 @@ class HomeActivity : AppCompatActivity(), CarouselItemListener, CarouselItemChan
         supportActionBar?.hide()
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
 
-        indicator.createIndicators(icons.size,0)
-        carousel.apply {
-            this.fragmentManager = supportFragmentManager
-            this.carouselItemChangeListener = this@HomeActivity
-
-            setDataSize(icons.size)
-            setCarouselItemLayout(R.layout.carousel_item)
-            setCarouselItemListener(this@HomeActivity)
-            apply()
-        }
-
         this.initialValue()
         this.initialAction()
         this.initialObserver()
     }
 
     override fun onCarouselItemCreated(view: View, position: Int) {
-        Glide
-            .with(this)
-            .load(icons[position])
-            .into(view.findViewById(com.narztiizzer.carousel.R.id.image))
+        viewModel.loadCarousel.value?.get(position)?.imageURL?.let {
+            Glide
+                .with(this)
+                .load(it)
+                .into(view.findViewById(com.narztiizzer.carousel.R.id.image))
+        }
     }
 
     override fun onCarouselItemChanged(position: Int) {
@@ -52,7 +44,7 @@ class HomeActivity : AppCompatActivity(), CarouselItemListener, CarouselItemChan
     }
 
     private fun initialValue(){
-        viewModel.getSampleRequest()
+        viewModel.getCarouselItems()
     }
 
     private fun initialAction(){
@@ -73,6 +65,19 @@ class HomeActivity : AppCompatActivity(), CarouselItemListener, CarouselItemChan
             Snackbar.make(container, it, Snackbar.LENGTH_SHORT).apply {
                 setAction("OK"){ this.dismiss() }
             }.show()
+        })
+
+        viewModel.loadCarousel.observe(this, Observer { data ->
+            indicator.createIndicators(data.size,0)
+            carousel.apply {
+                this.fragmentManager = supportFragmentManager
+                this.carouselItemChangeListener = this@HomeActivity
+
+                setDataSize(data.size)
+                setCarouselItemLayout(R.layout.carousel_item)
+                setCarouselItemListener(this@HomeActivity)
+                apply()
+            }
         })
     }
 }

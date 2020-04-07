@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
+import com.narztiizzer.sample.kkbank.utils.LoadingDialogFragment
 import com.narztiizzer.sample.kkbank.viewmodel.VMLogin
 import com.narztiizzer.sample.kkbank.viewmodel.VMPinCode
 import kotlinx.android.synthetic.main.login_fragment.*

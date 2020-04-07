@@ -1,6 +1,5 @@
-package com.narztiizzer.sample.kkbank
+package com.narztiizzer.sample.kkbank.utils
 
-import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -9,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.narztiizzer.sample.kkbank.R
 
 class LoadingDialogFragment: DialogFragment() {
 

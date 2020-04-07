@@ -5,6 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E0E5EC"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -14,6 +15,20 @@
         android:layout_weight="1"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/app_24"
+            android:layout_marginTop="@dimen/app_16"
+            android:layout_marginRight="@dimen/app_24"
+            android:layout_marginBottom="@dimen/app_16"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="@string/home_title"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <com.narztiizzer.carousel.CarouselView
             android:id="@+id/carousel"
@@ -26,7 +41,9 @@
             android:id="@+id/indicator"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="#333" />
+            app:ci_width="8dp"
+            app:ci_height="@dimen/app_8"
+            app:ci_drawable="@drawable/purple_radius" />
 
     </LinearLayout>
 
@@ -36,7 +53,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:layout_weight="1"
+        android:background="@drawable/logout_button_background"
+        android:elevation="0dp"
+        android:fontFamily="@font/quicksand_medium"
         android:text="Logout"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

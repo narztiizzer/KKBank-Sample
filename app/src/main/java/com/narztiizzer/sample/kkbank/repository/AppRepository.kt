@@ -1,5 +1,6 @@
 package com.narztiizzer.sample.kkbank.repository
 
+import com.narztiizzer.sample.kkbank.model.Carousel
 import com.narztiizzer.sample.kkbank.model.User
 
 open class AppRepository(private val localDatabase: LocalDatabase, private val apiService: ApiService): Repository {
@@ -7,4 +8,5 @@ open class AppRepository(private val localDatabase: LocalDatabase, private val a
     override fun getPinCodeFromLocal(): String? = this.localDatabase.getPinCode()
     override fun savePinCodeToLocal(pincode: String) { this.localDatabase.savePinCode(pincode) }
     override fun removePinCodeFromLocal() { this.localDatabase.deletePinCode() }
+    override fun getCacousels(): List<Carousel>? { return this.apiService.carousels().execute().body() }
 }

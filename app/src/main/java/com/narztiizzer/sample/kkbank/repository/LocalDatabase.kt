@@ -2,7 +2,7 @@ package com.narztiizzer.sample.kkbank.repository
 
 import android.content.Context
 
-class LocalDatabase(private val context: Context) {
+open class LocalDatabase(private val context: Context) {
     private val SHARED_PREFERENCE_KEY = "KK-SAMPLE-APP"
     private val PIN_CACHE_KEY = "PINCODE"
 

@@ -1,4 +1,4 @@
-package com.narztiizzer.sample.kkbank
+package com.narztiizzer.sample.kkbank.base
 
 import android.app.Application
 import com.narztiizzer.sample.kkbank.repository.ApiService
