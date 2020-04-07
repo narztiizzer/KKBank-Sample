@@ -26,10 +26,6 @@ class LoginUnitTest {
     @JvmField
     var rule = InstantTaskExecutorRule()
 
-    @ExperimentalCoroutinesApi
-    @get:Rule
-    var coroutinesRule = CoroutinesTestRule()
-
     private val context = mock(Context::class.java)
     private val localDatabase = LocalDatabase(context)
     private val apiService = mock(ApiService::class.java)

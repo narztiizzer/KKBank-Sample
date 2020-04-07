@@ -18,6 +18,7 @@ class MainUnitTest {
     private val apiService = Mockito.mock(ApiService::class.java)
     private val repository = AppRepository(localDatabase, apiService)
     private val viewModel = VMMain(repository)
+
     @Test
     fun checkPINCache_Test() {
         val sharePref = Mockito.mock(SharedPreferences::class.java)
