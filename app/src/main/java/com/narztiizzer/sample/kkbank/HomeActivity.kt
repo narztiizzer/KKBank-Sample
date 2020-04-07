@@ -15,7 +15,6 @@ import kotlinx.android.synthetic.main.home_activity.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity(), CarouselItemListener, CarouselItemChangeListener {
-    private val icons = listOf(R.drawable.bee, R.drawable.cat, R.drawable.dog, R.drawable.fish, R.drawable.iguana, R.drawable.lion)
     private val viewModel: VMHome by viewModel()
     private val loadingDialogFragment: LoadingDialogFragment by lazy { LoadingDialogFragment() }
 
@@ -35,7 +34,7 @@ class HomeActivity : AppCompatActivity(), CarouselItemListener, CarouselItemChan
             Glide
                 .with(this)
                 .load(it)
-                .into(view.findViewById(com.narztiizzer.carousel.R.id.image))
+                .into(view.findViewById(R.id.image))
         }
     }
 
@@ -43,9 +42,7 @@ class HomeActivity : AppCompatActivity(), CarouselItemListener, CarouselItemChan
         indicator.animatePageSelected(position)
     }
 
-    private fun initialValue(){
-        viewModel.getCarouselItems()
-    }
+    private fun initialValue(){ viewModel.getCarouselItems() }
 
     private fun initialAction(){
         logout.setOnClickListener { viewModel.logout() }
