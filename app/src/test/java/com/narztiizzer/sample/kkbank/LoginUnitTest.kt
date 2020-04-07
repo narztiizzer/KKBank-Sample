@@ -9,7 +9,6 @@ import com.narztiizzer.sample.kkbank.repository.AppRepository
 import com.narztiizzer.sample.kkbank.repository.LocalDatabase
 import com.narztiizzer.sample.kkbank.utils.CoroutinesTestRule
 import com.narztiizzer.sample.kkbank.viewmodel.VMLogin
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Assert.assertEquals
@@ -48,8 +47,8 @@ class LoginUnitTest {
         val username = "nattapongp"
         val password = "1234"
 
-        Mockito.`when`(context.getString(R.string.username_warming_message)).thenReturn("")
-        Mockito.`when`(context.getString(R.string.password_warming_message)).thenReturn("")
+        Mockito.`when`(context.getString(R.string.username_warning_message)).thenReturn("")
+        Mockito.`when`(context.getString(R.string.password_warning_message)).thenReturn("")
         assertTrue(viewModel.validateLoginData(context, username, password))
     }
 

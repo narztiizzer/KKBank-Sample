@@ -1,12 +1,15 @@
 <resources>
     <string name="app_name">KKBank Sample</string>
+    <string name="app_ok">OK</string>
     <string name="setup_pin">SETUP PASSCODE</string>
     <string name="confirm_pin">CONFIRM PASSCODE</string>
     <string name="validate_pin">ENTER PASSCODE</string>
     <string name="username_hint">Username</string>
     <string name="password_hint">Password</string>
-    <string name="username_warming_message">Please enter your username</string>
-    <string name="password_warming_message">Please enter password</string>
+    <string name="username_warning_message">Please enter your username</string>
+    <string name="password_warning_message">Please enter password</string>
+    <string name="passcode_not_match_message">Passcode not match</string>
+    <string name="passcode_not_valid_message">Passcode not valid, please try again.</string>
     <string name="loading_message">LOADING, PLEASE WAIT…</string>
     <string name="home_title">Home</string>
 </resources>

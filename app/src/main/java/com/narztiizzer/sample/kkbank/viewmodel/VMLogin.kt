@@ -41,11 +41,11 @@ class VMLogin(private val repository: AppRepository): ViewModel() {
     fun validateLoginData(context: Context, username: String, password: String): Boolean {
         return when {
             username.isEmpty() -> {
-                this._errorMessage.postValue(context.getString(R.string.username_warming_message))
+                this._errorMessage.postValue(context.getString(R.string.username_warning_message))
                 false
             }
             password.isEmpty() -> {
-                this._errorMessage.postValue(context.getString(R.string.password_warming_message))
+                this._errorMessage.postValue(context.getString(R.string.password_warning_message))
                 false
             }
             else -> { true }

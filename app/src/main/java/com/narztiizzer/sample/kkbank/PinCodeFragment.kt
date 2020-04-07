@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import com.google.android.material.snackbar.Snackbar
 import com.narztiizzer.sample.kkbank.viewmodel.VMPinCode
 import kotlinx.android.synthetic.main.pin_code_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -99,11 +100,21 @@ class PinCodeFragment: Fragment(), View.OnClickListener {
         //Compare setup pin with confirm pin and save
         this.viewModel.setupPinCode.observe(this.viewLifecycleOwner, Observer { isSuccess ->
             if(isSuccess) this.openHomepage()
+            else {
+                Snackbar.make(container,requireActivity().getString(R.string.passcode_not_match_message),Snackbar.LENGTH_SHORT)
+                    .apply { setAction(requireActivity().getString(R.string.app_ok)) { this.dismiss() } }
+                    .show()
+            }
         })
 
         //Compare input pin with cache
         this.viewModel.validatePinCode.observe(this.viewLifecycleOwner, Observer { isPass ->
             if(isPass) this.openHomepage()
+            else {
+                Snackbar.make(container,requireActivity().getString(R.string.passcode_not_valid_message),Snackbar.LENGTH_SHORT)
+                    .apply { setAction(requireActivity().getString(R.string.app_ok)) { this.dismiss() } }
+                    .show()
+            }
         })
     }
 
